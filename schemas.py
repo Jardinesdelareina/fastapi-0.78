@@ -13,4 +13,4 @@ class User(BaseModel):
     birthday: date
     is_married: bool = None
     technologies: List[Technologies]
-    
+    token: int
