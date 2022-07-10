@@ -3,7 +3,7 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
 
 
-Старт сервера (--reload - автоперезагрузка)
+Старт сервера
 >uvicorn main:app --reload
 
 Автодокументация
