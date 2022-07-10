@@ -1,6 +1,6 @@
 from typing import List
-from fastapi import FastAPI, Path, Query
-from schemas import User
+from fastapi import Body, FastAPI, Path, Query
+from schemas import Case, User
 
 app = FastAPI()
 
@@ -11,9 +11,18 @@ def home():
 
 
 @app.post('/user')
-def create_user(item: User):
-    return item
+def create_user(user: User, case: Case, quantities: int = Body(...)):
+    return {
+        'user': user,
+        'case': case,
+        'quantities': quantities
+    }
     
+
+@app.post('/case')
+def create_case(case: Case = Body(..., embed=True)):
+    return {'case': case}
+
 
 @app.get('/user')
 def get_user(param: str = Query(None,              # param не обязателен к заполнению
@@ -30,14 +39,14 @@ def get_user(param: str = Query(None,              # param не обязател
 
 @app.get('/user/{pk}')
 def get_user_id(pk: int = Path(...,   # pk обязателен к заполнению
-                            gt=0, # pk должен быть > 0
-                            le=6, # pk должен быть <= 6
+                            gt=0,     # pk должен быть > 0
+                            le=6,     # pk должен быть <= 6
                             ),
-                            token: int = Query(None, # token не обязателен к заполнению
-                                            gt=0,    # token должен быть > 0
-                                            le=2000  # token должен быть <= 2000 
+                            balance: float = Query(None,  # token не обязателен к заполнению
+                                            gt=0,       # token должен быть > 0
+                                            le=9999999.9  # token должен быть <= 9999999.9
                                             )):
     return {
         'pk': pk,
-        'token': token
+        'balance': balance,
     }
