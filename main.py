@@ -10,11 +10,10 @@ def home():
     return {'key': 'FastAPI start'}
 
 
-@app.post('/user')
-def create_user(user: User, case: Case, quantities: int = Body(...)):
+@app.post('/user', response_model=User, response_model_exclude_unset=True)
+def create_user(user: User, quantities: int = Body(...)):
     return {
         'user': user,
-        'case': case,
         'quantities': quantities,
     }
     

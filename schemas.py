@@ -11,7 +11,7 @@ class Token(BaseModel):
 
 class Case(BaseModel):
     title: str = Field(..., max_length=20)
-    compound: List[Token]
+    compound: List[Token] = []
     balance: float = 0
 
 
@@ -35,7 +35,7 @@ class User(BaseModel):
         )
     email: str = Field(...)
     reg: date
-    case: Case
+    case: Case = {}
 
     @validator('email')
     def check_email(cls, adress):
