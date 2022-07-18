@@ -9,6 +9,3 @@
 Автодокументация
 * http://127.0.0.1:8000/docs
 * http://127.0.0.1:8000/redoc
-
-##### Обучающие материалы
-[Уроки FastAPI](https://www.youtube.com/playlist?list=PLaED5GKTiQG8GW5Rv2hf3tRS-d9t9liUt)
